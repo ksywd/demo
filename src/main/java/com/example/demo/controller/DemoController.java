@@ -49,13 +49,23 @@ public class DemoController {
     }
         // 하단에 맵핑 이어서 추가
     @GetMapping("/testdb")
-    public String getAllTestDBs(Model model) {
-        TestDB test = testService.findByName("홍길동");
-        model.addAttribute("data4", test);
+public String getAllTestDBs(Model model) {
+    // 1번 사용자
+    TestDB user1 = testService.findByName("홍길동");
+    // 2번 사용자
+    TestDB user2 = testService.findByName("아저씨");
+    // 3번 사용자
+    TestDB user3 = testService.findByName("꾸러기");
 
-        System.out.println("데이터 출력 디버그 : " + test);
+    // 모델에 각각 추가
+    model.addAttribute("user1", user1);
+    model.addAttribute("user2", user2);
+    model.addAttribute("user3", user3);
 
-        // "뷰이름"은 test.html 같은 템플릿 파일 이름으로 교체해야 함
-        return "testdb";
-    }
+    System.out.println("데이터 출력 디버그 : " + user1 + ", " + user2 + ", " + user3);
+    
+    // "뷰이름"은 test.html 같은 템플릿 파일 이름으로 교체해야 함
+    return "testdb"; // testdb.html로 이동
+}
+
 }
