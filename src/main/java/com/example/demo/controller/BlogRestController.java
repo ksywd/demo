@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
-@RestController // @Controller + @ResponseBody
+// @RestController // @Controller + @ResponseBody
 public class BlogRestController {
 
     private final BlogService blogService;
