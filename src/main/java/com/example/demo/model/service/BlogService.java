@@ -3,6 +3,8 @@ package com.example.demo.model.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.model.domain.Article;
@@ -30,10 +32,14 @@ public class BlogService {
 
 
     // 게시글 등록
-    public Article save(AddArticleRequest request) {
-        return blogRepository.save(request.toEntity());
-    }
+    // public Article save(AddArticleRequest request) {
+    //     return blogRepository.save(request.toEntity());
+    // }
 
+    public Board save(AddArticleRequest request){
+        // DTO가 없는 경우 이곳에 직접 구현 가능
+        return blogRepository2.save(request.toEntity());
+    }
     // 게시글 단일 조회
     // public Optional<Article> findById(Long id) {
     //     return blogRepository.findById(id);
@@ -55,4 +61,13 @@ public class BlogService {
     public void delete(Long id) {
         blogRepository.deleteById(id);
     }
+
+    public Page<Board> findAll(Pageable pageable) {
+        return blogRepository2.findAll(pageable);
+    }
+
+    public Page<Board> searchByKeyword(String keyword, Pageable pageable) {
+        return blogRepository2.findByTitleContainingIgnoreCase(keyword, pageable);
+    } // LIKE 검색 제공(대소문자 무시)
+
 }

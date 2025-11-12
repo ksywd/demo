@@ -25,7 +25,8 @@ public class Board {
     private String count = "";
     @Column(name = "likec", nullable = false) // 좋아요
     private String likec = "";
-
+    @Builder
+    
     public Board(String title, String content, String user, String newdate, String count, String likec){
         this.title = title;
         this.content = content;
