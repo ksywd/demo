@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,39 +7,44 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.demo.model.domain.Member;
 import com.example.demo.model.service.AddMemberRequest;
 import com.example.demo.model.service.MemberService;
+import lombok.RequiredArgsConstructor;
 
 @Controller
+@RequiredArgsConstructor
 public class MemberController {
 
-    @Autowired
-    MemberService memberService;
+    private final MemberService memberService;
 
     @GetMapping("/join_new") // 회원 가입 페이지 연결
     public String join_new() {
-        return "join_new"; // .HTML 연결
+        return "join_new";
     }
 
     @PostMapping("/api/members") // 회원 가입 저장
     public String addmembers(@ModelAttribute AddMemberRequest request) {
         memberService.saveMember(request);
-        return "join_end"; // .HTML 연결
+        return "join_end";
     }
-    @GetMapping("/member_login") // 로그인 페이지 연결
+
+    @GetMapping("/login") // 로그인 페이지 연결
     public String member_login() {
-            @PostMapping("/api/login_check") // 로그인(아이디, 패스워드) 체크
-            public String checkMembers(@RequestParam String email, @RequestParam String password, Model model) {
-                try {
-                    Member member = memberService.loginCheck(email, password); // 패스워드 반환
-                    model.addAttribute("member", member); // 로그인 성공 시 회원 정보 전달
-                    return "redirect:/board_list"; // 로그인 성공 후 이동할 페이지
-                } catch (IllegalArgumentException e) {
-                    model.addAttribute("error", e.getMessage()); // 에러 메시지 전달
-                    return "login"; // 로그인 실패 시 로그인 페이지로 리다이렉트
-                }
-            }
+        return "login";
     }
-                }
-            }
+
+    @PostMapping("/api/login_check") // 로그인(아이디, 비밀번호) 체크
+    public String checkMembers(@RequestParam String email,
+                               @RequestParam String password,
+                               Model model) {
+
+        try {
+            var member = memberService.loginCheck(email, password);
+            model.addAttribute("member", member);
+            return "redirect:/board_list";
+        } catch (IllegalArgumentException e) {
+            model.addAttribute("error", e.getMessage());
+            return "login";
+        }
+    }
+}
