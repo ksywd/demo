@@ -26,20 +26,25 @@
                         <th>작성일</th>
                         <th>조회수</th>
                         <th>좋아요</th>
+                        <th>버튼</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="board : ${boards}">
-                        <td th:text="${board.id}"></td>
+                    <tr>
+                        <td th:text="${boards.id}"></td>
                         <td>
-                            <a th:href="@{/board_view/{id}(id=${board.id})}">
-                                <span th:text="${board.title}"></span>
+                            <a th:href="@{/board_view/{id}(id=${boards.id})}">
+                                <span th:text="${boards.title}"></span>
                             </a>
                         </td>
-                        <td th:text="${board.user}"></td>
-                        <td th:text="${board.newdate}"></td>
-                        <td th:text="${board.count}"></td>
-                        <td th:text="${board.likec}"></td>
+                        <td th:text="${boards.user}"></td>
+                        <td th:text="${boards.newdate}"></td>
+                        <td th:text="${boards.count}"></td>
+                        <td th:text="${boards.likec}"></td>
+                        <td class="action-cell">
+                            <a class="btn btn-warning btn-sm"
+                               th:href="@{/board_edit/{id}(id=${boards.id})}">수정</a>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -49,11 +54,11 @@
                         <th>글내용</th>
                     </tr>
                 </thead>
-                    <tbody>
-                        <tr th:each="board : ${boards}">
-                            <td th:text="${board.content}"></td>
-                        </tr>
-                    </tbody>
+                <tbody>
+                    <tr>
+                        <td th:text="${boards.content}"></td>
+                    </tr>
+                </tbody>
             </table>
         </div>
     </div>

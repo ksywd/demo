@@ -30,16 +30,15 @@ public class BlogService {
         return blogRepository2.findAll();
     }
 
-
     // 게시글 등록
     // public Article save(AddArticleRequest request) {
     //     return blogRepository.save(request.toEntity());
     // }
 
     public Board save(AddArticleRequest request){
-        // DTO가 없는 경우 이곳에 직접 구현 가능
         return blogRepository2.save(request.toEntity());
     }
+
     // 게시글 단일 조회
     // public Optional<Article> findById(Long id) {
     //     return blogRepository.findById(id);
@@ -49,17 +48,17 @@ public class BlogService {
         return blogRepository2.findById(id);
     }
 
-    // // 게시글 수정
+    // 게시글 수정
     public void update(Long id, AddArticleRequest request) {
-        blogRepository.findById(id).ifPresent(article -> {
-            article.update(request.getTitle(), request.getContent());
-            blogRepository.save(article);
+        blogRepository2.findById(id).ifPresent(board -> {
+            board.update(request.getTitle(), request.getContent());
+            blogRepository2.save(board);
         });
     }
 
     // 게시글 삭제
     public void delete(Long id) {
-        blogRepository.deleteById(id);
+        blogRepository2.deleteById(id);
     }
 
     public Page<Board> findAll(Pageable pageable) {
@@ -68,6 +67,6 @@ public class BlogService {
 
     public Page<Board> searchByKeyword(String keyword, Pageable pageable) {
         return blogRepository2.findByTitleContainingIgnoreCase(keyword, pageable);
-    } // LIKE 검색 제공(대소문자 무시)
+    }
 
 }

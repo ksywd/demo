@@ -30,45 +30,43 @@ public class BlogController {
 
     // @GetMapping("/board_list") // 새로운 게시판 링크 지정
     // public String board_list(Model model) {
-    //     List<Board> list = blogService.findAll(); // 게시판 전체 리스트, 기존 Article에서 Board로 변경됨
-    //     model.addAttribute("boards", list); // 모델에 추가
-    //     return "board_list"; // .HTML 연결
+    //     List<Board> list = blogService.findAll(); 
+    //     model.addAttribute("boards", list); 
+    //     return "board_list"; 
     // }
 
     @GetMapping("/board_list") // 새로운 게시판 링크 지정
     public String board_list(Model model,
                             @RequestParam(defaultValue = "0") int page,
                             @RequestParam(defaultValue = "") String keyword) {
-        PageRequest pageable = PageRequest.of(page, 30); // 한 페이지의 게시글 수
-        Page<Board> list; // Page를 반환
+        PageRequest pageable = PageRequest.of(page, 30); 
+        Page<Board> list; 
 
         if (keyword.isEmpty()) {
-            list = blogService.findAll(pageable); // 기본 전체 출력(키워드 x)
+            list = blogService.findAll(pageable); 
         } else {
-            list = blogService.searchByKeyword(keyword, pageable); // 키워드로 검색
+            list = blogService.searchByKeyword(keyword, pageable); 
         }
 
-        model.addAttribute("boards", list); // 모델에 추가
-        model.addAttribute("totalPages", list.getTotalPages()); // 페이지 크기
-        model.addAttribute("currentPage", page); // 페이지 번호
-        model.addAttribute("keyword", keyword); // 키워드
+        model.addAttribute("boards", list); 
+        model.addAttribute("totalPages", list.getTotalPages()); 
+        model.addAttribute("currentPage", page); 
+        model.addAttribute("keyword", keyword); 
 
-        return "board_list"; // .HTML 연결
+        return "board_list"; 
     }
 
     @GetMapping("/board_view/{id}") // 게시판 링크 지정
     public String board_view(Model model, @PathVariable Long id) {
-        Optional<Board> list = blogService.findById(id); // 선택한 게시판 글
+        Optional<Board> list = blogService.findById(id); 
 
         if (list.isPresent()) {
-            model.addAttribute("boards", list.get()); // 존재할 경우 실제 Board 객체를 모델에 추가
+            model.addAttribute("boards", list.get()); 
         } else {
-            // 처리할 로직 추가 (예: 오류 페이지로 리다이렉트, 예외 처리 등)
-            return "/error_page/article_error"; // 오류 처리 페이지로 연결
+            return "/error_page/article_error"; 
         }
-        return "board_view"; // .HTML 연결
+        return "board_view"; 
     }
-
 
     // @GetMapping("/article_edit/{id}")
     // public String article_edit(Model model, @PathVariable Long id) {
@@ -89,8 +87,27 @@ public class BlogController {
     @PostMapping("/api/boards") // 글쓰기 게시판 저장
     public String addboards(@ModelAttribute AddArticleRequest request) {
         blogService.save(request);
-        return "redirect:/board_list"; // .HTML 연결
+        return "redirect:/board_list"; 
     }
+
+    @GetMapping("/board_edit/{id}")
+    public String board_edit(Model model, @PathVariable Long id) {
+        Optional<Board> boardOpt = blogService.findById(id);
+
+        if (boardOpt.isPresent()) {
+            model.addAttribute("board", boardOpt.get());
+        } else {
+            return "/error_page/article_error";
+        }
+        return "board_edit";
+    }
+
+    @PostMapping("/board_edit/{id}")
+    public String updateBoard(@PathVariable Long id, @ModelAttribute AddArticleRequest request) {
+        blogService.update(id, request);
+        return "redirect:/board_list";
+    }
+
 
     @PutMapping("/api/article_edit/{id}")
     public String updateArticle(@PathVariable Long id, @ModelAttribute AddArticleRequest request) {
@@ -104,7 +121,6 @@ public class BlogController {
         return "redirect:/article_list";
     }
 
-    // PDF 리다이렉트 실습용 추가
     @PostMapping("/api/articles")
     public String addArticle(@ModelAttribute AddArticleRequest request) {
         blogService.save(request);
