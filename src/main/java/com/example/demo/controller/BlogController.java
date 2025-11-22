@@ -39,7 +39,8 @@ public class BlogController {
     public String board_list(Model model,
                             @RequestParam(defaultValue = "0") int page,
                             @RequestParam(defaultValue = "") String keyword) {
-        PageRequest pageable = PageRequest.of(page, 30); 
+        int pageSize = 30;
+        PageRequest pageable = PageRequest.of(page, pageSize); 
         Page<Board> list; 
 
         if (keyword.isEmpty()) {
@@ -48,10 +49,13 @@ public class BlogController {
             list = blogService.searchByKeyword(keyword, pageable); 
         }
 
+        int startNum = (page * pageSize) + 1;
+
         model.addAttribute("boards", list); 
         model.addAttribute("totalPages", list.getTotalPages()); 
         model.addAttribute("currentPage", page); 
         model.addAttribute("keyword", keyword); 
+        model.addAttribute("startNum", startNum);
 
         return "board_list"; 
     }
@@ -108,6 +112,11 @@ public class BlogController {
         return "redirect:/board_list";
     }
 
+    @DeleteMapping("/api/board_delete/{id}")
+    public String deleteBoard(@PathVariable Long id) {
+        blogService.delete(id);
+        return "redirect:/board_list";
+    }
 
     @PutMapping("/api/article_edit/{id}")
     public String updateArticle(@PathVariable Long id, @ModelAttribute AddArticleRequest request) {

@@ -8,8 +8,11 @@ import com.example.demo.model.domain.Member;
 import com.example.demo.model.repository.MemberRepository;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.validation.annotation.Validated;
+import jakarta.validation.Valid;
 
 @Service
+@Validated
 @Transactional // 트랜잭션 처리(클래스 내 모든 메소드 대상)
 @RequiredArgsConstructor
 public class MemberService {
@@ -26,7 +29,7 @@ public class MemberService {
     }
 
     // 회원 가입 저장
-    public Member saveMember(AddMemberRequest request) {
+    public Member saveMember(@Valid AddMemberRequest request) {
         // 1) 이메일 중복 체크
         validateDuplicateMember(request);
 

@@ -6,19 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-        .action-cell > * {
-            margin-right: 6px;
-        }
-        .action-cell form {
-            display: inline;
-        }
+        .action-cell > * { margin-right: 6px; }
+        .action-cell form { display: inline; }
     </style>
 </head>
 <body>
     <div class="container">
         <h1 class="mt-5">블로그 게시판(new)</h1>
 
-        <!-- 게시글 검색창 -->
         <form th:action="@{/board_list}" method="get" class="mt-4">
             <div class="input-group">
                 <input type="text" name="keyword" th:value="${keyword}" class="form-control" placeholder="검색어 입력...">
@@ -26,50 +21,57 @@
             </div>
         </form>
 
-        <!-- 게시글 리스트 -->
         <div class="mt-5">
             <h2>게시글 목록</h2>
             <table class="table table-bordered">
                 <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>제목</th>
-                        <th>작성자</th>
-                        <th>작성일</th>
-                        <th>조회수</th>
-                        <th>좋아요</th>
-                        <th>버튼</th>
-                    </tr>
+                <tr>
+                    <th>글번호</th>
+                    <th>제목</th>
+                    <th>작성자</th>
+                    <th>작성일</th>
+                    <th>조회수</th>
+                    <th>좋아요</th>
+                    <th>버튼</th>
+                </tr>
                 </thead>
+
                 <tbody>
-                    <tr th:each="board : ${boards}">
-                        <td th:text="${board.id}"></td>
-                        <td>
-                            <a th:href="@{/board_view/{id}(id=${board.id})}">
-                                <span th:text="${board.title}"></span>
-                            </a>
-                        </td>
-                        <td th:text="${board.user}"></td>
-                        <td th:text="${board.newdate}"></td>
-                        <td th:text="${board.count}"></td>
-                        <td th:text="${board.likec}"></td>
-                        <td class="action-cell">
-                            <a class="btn btn-warning btn-sm"
-                               th:href="@{/board_edit/{id}(id=${board.id})}">수정</a>
-                        </td>
-                    </tr>
+                <tr th:each="board, stat : ${boards}">
+                    <td th:text="${startNum + stat.index}"></td>
+
+                    <td>
+                        <a th:href="@{/board_view/{id}(id=${board.id})}">
+                            <span th:text="${board.title}"></span>
+                        </a>
+                    </td>
+
+                    <td th:text="${board.user}"></td>
+                    <td th:text="${board.newdate}"></td>
+                    <td th:text="${board.count}"></td>
+                    <td th:text="${board.likec}"></td>
+
+                    <td class="action-cell">
+                        <a class="btn btn-warning btn-sm"
+                           th:href="@{/board_edit/{id}(id=${board.id})}">수정</a>
+
+                        <form th:action="@{/api/board_delete/{id}(id=${board.id})}" method="post">
+                            <input type="hidden" name="_method" value="delete">
+                            <button class="btn btn-danger btn-sm" type="submit">삭제</button>
+                        </form>
+                    </td>
+                </tr>
                 </tbody>
             </table>
         </div>
 
         <table class="table table-bordered">
             <tbody>
-                <tr>
-                    <td>
-                        <!-- 글쓰기 버튼 -->
-                        <a class="btn btn-warning" th:href="@{/board_write}">글쓰기</a>
-                    </td>
-                </tr>
+            <tr>
+                <td>
+                    <a class="btn btn-warning" th:href="@{/board_write}">글쓰기</a>
+                </td>
+            </tr>
             </tbody>
         </table>
     </div>

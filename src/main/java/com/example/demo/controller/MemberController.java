@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.demo.model.service.AddMemberRequest;
 import com.example.demo.model.service.MemberService;
 import lombok.RequiredArgsConstructor;
+import jakarta.validation.Valid;
 
 @Controller
 @RequiredArgsConstructor
@@ -23,7 +24,7 @@ public class MemberController {
     }
 
     @PostMapping("/api/members") // 회원 가입 저장
-    public String addmembers(@ModelAttribute AddMemberRequest request) {
+    public String addmembers(@Valid @ModelAttribute AddMemberRequest request) {
         memberService.saveMember(request);
         return "join_end";
     }
