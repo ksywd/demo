@@ -14,7 +14,6 @@
     <div class="container">
         <h1 class="mt-5">블로그 게시판(new)</h1>
 
-        <!-- 게시글 리스트 -->
         <div class="mt-5">
             <h2>게시글 목록</h2>
             <table class="table table-bordered">
@@ -41,13 +40,23 @@
                         <td th:text="${boards.newdate}"></td>
                         <td th:text="${boards.count}"></td>
                         <td th:text="${boards.likec}"></td>
+
                         <td class="action-cell">
-                            <a class="btn btn-warning btn-sm"
-                               th:href="@{/board_edit/{id}(id=${boards.id})}">수정</a>
+                            <div th:if="${email} == ${boards.user}">
+                                <a class="btn btn-warning btn-sm"
+                                   th:href="@{/board_edit/{id}(id=${boards.id})}">수정</a>
+
+                                <form th:action="@{/api/board_delete/{id}(id=${boards.id})}"
+                                      method="post" style="display:inline;">
+                                    <input type="hidden" name="_method" value="delete">
+                                    <button class="btn btn-danger btn-sm" type="submit">삭제</button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
                 </tbody>
             </table>
+
             <table class="table table-bordered">
                 <thead>
                     <tr>

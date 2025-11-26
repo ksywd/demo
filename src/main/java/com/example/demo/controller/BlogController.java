@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,13 +29,6 @@ public class BlogController {
     //     return "article_list";
     // }
 
-    // @GetMapping("/board_list") // 새로운 게시판 링크 지정
-    // public String board_list(Model model) {
-    //     List<Board> list = blogService.findAll(); 
-    //     model.addAttribute("boards", list); 
-    //     return "board_list"; 
-    // }
-
     @GetMapping("/board_list") // 새로운 게시판 링크 지정
     public String board_list(Model model,
         @RequestParam(defaultValue = "0") int page,
@@ -50,7 +42,7 @@ public class BlogController {
         }
         System.out.println("세션 userId: " + userId); // 서버 IDE 터미널에 세션 값 출력
 
-        // 📌 PDF 내용 추가: 세션에서 email 얻기
+        // 세션에서 email 얻기
         String email = (String) session.getAttribute("email"); // 세션에서 이메일 확인
         System.out.println("세션 email: " + email);
 
@@ -71,13 +63,16 @@ public class BlogController {
         model.addAttribute("currentPage", page);
         model.addAttribute("keyword", keyword);
         model.addAttribute("startNum", startNum);
-        model.addAttribute("email", email); // 📌 로그인 사용자(이메일) 전달
+        model.addAttribute("email", email); // 로그인 사용자(이메일) 전달
 
         return "board_list";
     }
 
     @GetMapping("/board_view/{id}") // 게시판 링크 지정
-    public String board_view(Model model, @PathVariable Long id) {
+    public String board_view(Model model,
+                             @PathVariable Long id,
+                             HttpSession session) {
+
         Optional<Board> list = blogService.findById(id);
 
         if (list.isPresent()) {
@@ -85,6 +80,10 @@ public class BlogController {
         } else {
             return "/error_page/article_error";
         }
+
+        String email = (String) session.getAttribute("email");
+        model.addAttribute("email", email);
+
         return "board_view";
     }
 
@@ -94,10 +93,20 @@ public class BlogController {
     }
 
     @PostMapping("/api/boards") // 글쓰기 게시판 저장
-    public String addboards(@ModelAttribute AddArticleRequest request) {
-        blogService.save(request);
-        return "redirect:/board_list";
+    public String addboards(@ModelAttribute AddArticleRequest request,
+                        HttpSession session) {
+
+    String email = (String) session.getAttribute("email");
+    if (email == null) {
+        return "redirect:/login";
     }
+
+    request.setUser(email);
+    request.setEmail(email);
+
+    blogService.save(request);
+    return "redirect:/board_list";
+}
 
     @GetMapping("/board_edit/{id}")
     public String board_edit(Model model, @PathVariable Long id) {
