@@ -614,24 +614,39 @@
                             </div>
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <!-- ★ name="subject" 추가 -->
                                     <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject">
                                     <label for="subject">제목</label>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <!-- ★ name="message" 추가 -->
                                     <textarea class="form-control" placeholder="Leave a message here"
                                             id="message" name="message" style="height: 100px"></textarea>
                                     <label for="message">내용</label>
                                 </div>
                             </div>
                             <div class="col-12">
-            <button class="btn btn-primary py-3 px-5" type="submit">메시지 전송</button>
-        </div>
-    </div>
-</form>
+                                <button class="btn btn-primary py-3 px-5" type="submit">메시지 전송(파일 업로드)</button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <hr class="my-4">
+                    <form th:action="@{/upload-file}" method="post" enctype="multipart/form-data">
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="file" class="form-control" id="profileFile" name="file">
+                                    <label for="profileFile">프로필 파일 업로드</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-secondary py-3 px-5" type="submit">
+                                    파일 업로드
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
