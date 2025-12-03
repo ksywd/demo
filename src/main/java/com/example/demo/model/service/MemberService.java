@@ -44,11 +44,12 @@ public class MemberService {
         if (member == null) {
             throw new IllegalArgumentException("등록되지 않은 이메일입니다.");
         }
-
+        
         if (!passwordEncoder.matches(rawPassword, member.getPassword())) {
             throw new IllegalArgumentException("비밀번호가 일치하지 않습니다.");
         }
 
         return member;
     }
+
 }

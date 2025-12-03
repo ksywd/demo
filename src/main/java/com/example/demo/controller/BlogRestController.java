@@ -15,7 +15,6 @@ public class BlogRestController {
 
     private final BlogService blogService;
 
-    // 예전 REST용 코드
     // @PostMapping("/api/articles")
     // public ResponseEntity<Article> addArticle(@ModelAttribute AddArticleRequest request) {
     //     Article savedArticle = blogService.save(request);
@@ -23,8 +22,7 @@ public class BlogRestController {
     //             .status(HttpStatus.CREATED)
     //             .body(savedArticle);
     // }
-
-    // 브라우저가 요청하는 /favicon.ico에 대해 빈 응답 처리
+    
     @GetMapping("/favicon.ico")
     public void favicon() {
     }

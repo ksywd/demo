@@ -5,7 +5,7 @@ import com.example.demo.model.domain.Board;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Data   // 기본적인 getter/setter 제공
+@Data
 public class AddArticleRequest {
 
     private String title;
@@ -18,12 +18,10 @@ public class AddArticleRequest {
     private String age;
     private String email;
 
-    // board 테이블의 나머지 필드들
     private String mobile;
     private String name;
     private String password;
 
-    // 입력값을 Board 엔티티로 변환
     public Board toEntity() {
         return Board.builder()
                 .title(title)

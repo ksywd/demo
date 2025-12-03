@@ -42,28 +42,31 @@ public class MemberController {
 
     // 로그인 검증 및 세션 생성
     @PostMapping("/api/login_check")
-    public String checkMembers(@RequestParam String email,
-                               @RequestParam String password,
-                               Model model,
-                               HttpServletRequest request) {
+        public String checkMembers(@RequestParam String email,
+                                @RequestParam String password,
+                                Model model,
+                                HttpServletRequest request) {
 
-        try {
-            var member = memberService.loginCheck(email, password);
+            try {
+                var member = memberService.loginCheck(email, password);
 
-            // 세션 생성 후 로그인 정보 저장
-            HttpSession session = request.getSession(true);
-            session.setAttribute("loginEmail", email);
-            session.setAttribute("loginMember", member);
+                HttpSession session = request.getSession(true);
 
-            model.addAttribute("member", member);
+                // ✔ 게시판에서 사용하는 키로 맞춰주기
+                session.setAttribute("userId", email);   // 아이디로 이메일을 사용한다면
+                session.setAttribute("email", email);    // 화면에서 쓸 이메일
+                session.setAttribute("loginMember", member);
 
-            return "redirect:/board_list";
+                model.addAttribute("member", member);
 
-        } catch (IllegalArgumentException e) {
-            model.addAttribute("error", e.getMessage());
-            return "login";
+                return "redirect:/board_list";
+
+            } catch (IllegalArgumentException e) {
+                model.addAttribute("error", e.getMessage());
+                return "login";
+            }
         }
-    }
+
 
     // 로그아웃: 현재 세션만 종료
     @GetMapping("/api/logout")

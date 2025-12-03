@@ -130,8 +130,7 @@ public class BlogController {
         blogService.delete(id);
         return "redirect:/board_list";
     }
-
-    // 아래부터는 article_list 관련 기존 코드 유지
+    // 게시글 수정 처리
 
     @PutMapping("/api/article_edit/{id}")
     public String updateArticle(@PathVariable Long id, @ModelAttribute AddArticleRequest request) {

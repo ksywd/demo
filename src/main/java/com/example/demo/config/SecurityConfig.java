@@ -12,20 +12,22 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    // 보안 설정
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         http
-            // XSS 관련 헤더 추가
+            // XSS 헤더
             .headers(headers -> headers.addHeaderWriter((request, response) ->
                 response.setHeader("X-XSS-Protection", "1; mode=block")
             ))
 
-            // CSRF 사용하지 않음
+            // CSRF 끄기
             .csrf(csrf -> csrf.disable())
 
-            // 세션 설정
+            .authorizeHttpRequests(auth -> auth
+                .anyRequest().permitAll()
+            )
+
             .sessionManagement(session -> session
                 .invalidSessionUrl("/session-expired")
                 .maximumSessions(1)
@@ -35,7 +37,7 @@ public class SecurityConfig {
         return http.build();
     }
 
-    // 비밀번호 암호화 객체
+    // 비밀번호 암호화
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();

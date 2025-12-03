@@ -12,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class TestService {
 
-    @Autowired   // TestRepository 주입
+    @Autowired
     private TestRepository testRepository;
 
     // 이름으로 데이터 조회
