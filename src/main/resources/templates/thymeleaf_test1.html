@@ -1,19 +1,37 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="UTF-8" />
+
+<head>
+    <meta charset="UTF-8">
     <title>index 테스트 페이지</title>
-  </head>
-  <body>
+</head>
+
+<body>
     <h1>안녕하세요!</h1>
+
+    <!-- HTML 형태 그대로 출력 -->
     <span th:utext="${data1}">message</span>
+
+    <!-- 입력 필드 값 세팅 -->
     <input type="text" th:value="${data2}">
+
+    <!-- 체크박스 예시 -->
     <input type="checkbox" th:field="*{data2}" th:value="true"> 동의합니다.
-    <p><a th:href="@{/posts/(id=${link})}">글 상세보기</a></p>
+
+    <!-- 링크 이동 -->
+    <p>
+        <a th:href="@{/posts/(id=${link})}">글 상세보기</a>
+    </p>
+
+    <!-- 변수 선언 후 사용 -->
     <div th:with="first=${name}">
-    <p>리스트에서 처음 사람의 이름 = <span th:text="${first}"></span></p>
+        <p>리스트에서 처음 사람의 이름 = <span th:text="${first}"></span></p>
     </div>
-    <a th:href="@{/products/detail/(productId=${para1}, productId=${para2})}">상품 상세보기</a>
+
+    <!-- 파라미터 전달 테스트 -->
+    <a th:href="@{/products/detail/(productId=${para1}, productId=${para2})}">
+        상품 상세보기
+    </a>
 
 </body>
 </html>

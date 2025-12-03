@@ -10,46 +10,45 @@ import jakarta.persistence.*;
 public class Board {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // 게시글 번호 자동 증가
     @Column(name = "id", updatable = false)
     private Long id;
 
-    @Column(name = "title", nullable = false)
+    @Column(nullable = false)
     private String title = "";
 
-    @Column(name = "content", nullable = false)
+    @Column(nullable = false)
     private String content = "";
 
-    @Column(name = "user", nullable = false)
+    @Column(nullable = false)
     private String user = "";
 
-    @Column(name = "newdate", nullable = false)
+    @Column(nullable = false)
     private String newdate = "";
 
-    @Column(name = "count", nullable = false)
-    private String count = "";
+    @Column(nullable = false)
+    private String count = "";     // 조회수
 
-    @Column(name = "likec", nullable = false)
-    private String likec = "";
+    @Column(nullable = false)
+    private String likec = "";     // 좋아요 수
 
-    @Column(name = "address", nullable = false)
+    @Column(nullable = false)
     private String address = "";
 
-    @Column(name = "age", nullable = false)
+    @Column(nullable = false)
     private String age = "";
 
-    @Column(name = "email", nullable = false)
+    @Column(nullable = false)
     private String email = "";
 
-    // === 여기부터 추가된 컬럼들 ===
-
-    @Column(name = "mobile", nullable = false)
+    // 추가 정보 컬럼들
+    @Column(nullable = false)
     private String mobile = "";
 
-    @Column(name = "name", nullable = false)
+    @Column(nullable = false)
     private String name = "";
 
-    @Column(name = "password", nullable = false)
+    @Column(nullable = false)
     private String password = "";
 
     @Builder
@@ -73,6 +72,7 @@ public class Board {
         this.count = count;
         this.likec = likec;
 
+        // 값이 null로 들어오는 경우 대비
         this.address  = (address  == null) ? "" : address;
         this.age      = (age      == null) ? "" : age;
         this.email    = (email    == null) ? "" : email;
@@ -81,6 +81,7 @@ public class Board {
         this.password = (password == null) ? "" : password;
     }
 
+    // 제목과 내용만 수정할 때 사용
     public void update(String title, String content) {
         this.title = title;
         this.content = content;

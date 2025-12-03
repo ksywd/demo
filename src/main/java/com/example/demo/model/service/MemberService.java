@@ -13,45 +13,42 @@ import jakarta.validation.Valid;
 
 @Service
 @Validated
-@Transactional // 트랜잭션 처리(클래스 내 모든 메소드 대상)
+@Transactional   // 서비스 계층에서 트랜잭션 관리
 @RequiredArgsConstructor
 public class MemberService {
 
     private final MemberRepository memberRepository;
-    private final PasswordEncoder passwordEncoder; // 스프링 버전 5 이후, 단방향 해싱 알고리즘 지원
+    private final PasswordEncoder passwordEncoder;
 
-    // 회원 중복(이메일) 체크
+    // 이메일 중복 여부 확인
     private void validateDuplicateMember(AddMemberRequest request) {
-        Member findMember = memberRepository.findByEmail(request.getEmail()); // 이메일 존재 유무
+        Member findMember = memberRepository.findByEmail(request.getEmail());
         if (findMember != null) {
-            throw new IllegalStateException("이미 가입된 회원입니다."); // 예외처리
+            throw new IllegalStateException("이미 가입된 회원입니다.");
         }
     }
 
-    // 회원 가입 저장
+    // 회원 가입 처리
     public Member saveMember(@Valid AddMemberRequest request) {
-        // 1) 이메일 중복 체크
         validateDuplicateMember(request);
 
-        // 2) 비밀번호 암호화
         String encodedPassword = passwordEncoder.encode(request.getPassword());
-        request.setPassword(encodedPassword); // DTO에 암호화된 비밀번호 설정
+        request.setPassword(encodedPassword);   // 암호화하여 저장
 
-        // 3) 엔티티로 변환 후 저장
         return memberRepository.save(request.toEntity());
     }
 
-    // 로그인 체크
+    // 로그인 검증
     public Member loginCheck(String email, String rawPassword) {
-        Member member = memberRepository.findByEmail(email); // 이메일 조회
+        Member member = memberRepository.findByEmail(email);
         if (member == null) {
             throw new IllegalArgumentException("등록되지 않은 이메일입니다.");
         }
 
-        if (!passwordEncoder.matches(rawPassword, member.getPassword())) { // 비밀번호 확인
+        if (!passwordEncoder.matches(rawPassword, member.getPassword())) {
             throw new IllegalArgumentException("비밀번호가 일치하지 않습니다.");
         }
 
-        return member; // 인증 성공 시 회원 객체 반환
+        return member;
     }
 }

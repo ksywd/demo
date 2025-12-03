@@ -8,135 +8,136 @@
     <meta content="" name="keywords">
     <meta content="" name="description">
 
-    <!-- Favicon -->
+    <!-- 파비콘 -->
     <link href="img/favicon.ico" rel="icon">
 
-    <!-- Google Web Fonts -->
+    <!-- 폰트 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <!-- Icon Font Stylesheet -->
+    <!-- 아이콘 -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
-    <!-- Libraries Stylesheet -->
+    <!-- 외부 라이브러리 -->
     <link href="lib/animate/animate.min.css" rel="stylesheet">
     <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
-    <!-- Customized Bootstrap Stylesheet -->
+    <!-- 기본 CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="51">
-    <!-- Spinner Start -->
+
+    <!-- 로딩 스피너 -->
     <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
         <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
             <span class="sr-only">Loading...</span>
         </div>
     </div>
-    <!-- Spinner End -->
 
-
-    <!-- Navbar Start -->
+    <!-- 네비바 -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light fixed-top shadow py-lg-0 px-4 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
         <a href="index.html" class="navbar-brand d-block d-lg-none">
             <h1 class="text-primary fw-bold m-0">ProMan</h1>
         </a>
+
         <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
+
         <div class="collapse navbar-collapse justify-content-between py-4 py-lg-0" id="navbarCollapse">
             <div class="navbar-nav ms-auto py-0">
                 <a href="#home" class="nav-item nav-link active">홈페이지</a>
                 <a href="#about" class="nav-item nav-link">내소개</a>
                 <a href="#skill" class="nav-item nav-link">기술경험</a>
-                <!-- <a href="#service" class="nav-item nav-link">Services</a> -->
             </div>
+
+            <!-- 게시판 버튼 -->
             <a href="/board_list" class="navbar-brand bg-secondary py-3 px-4 mx-3 d-none d-lg-block" target="_blank">
                 <h1 class="text-primary fw-bold m-0">게시판</h1>
             </a>
+
             <div class="navbar-nav me-auto py-0">
                 <a href="#project" class="nav-item nav-link">프로젝트</a>
                 <a href="#team" class="nav-item nav-link">팀원</a>
                 <a href="#testimonial" class="nav-item nav-link">연락하기</a>
-                <!-- <a href="#contact" class="nav-item nav-link">Contact</a> -->
             </div>
         </div>
     </nav>
-    <!-- Navbar End -->
 
-
-    <!-- Header Start -->
+    <!-- 헤더 -->
     <div class="container-fluid bg-light my-6 mt-0" id="home">
         <div class="container">
             <div class="row g-5 align-items-center">
                 <div class="col-lg-6 py-6 pb-0 pt-lg-0">
                     <h3 class="text-primary mb-3">I'm</h3>
                     <h1 class="display-3 mb-3">김수용</h1>
+
                     <h2 class="typed-text-output d-inline"></h2>
-                    <div class="typed-text d-none">웹 개발자, 게임 클라이언트 개발자, 서버 운영/관리  </div>
+                    <div class="typed-text d-none">웹 개발자, 게임 클라이언트 개발자, 서버 운영/관리</div>
+
                     <div class="d-flex align-items-center pt-5">
                         <a href="" class="btn btn-primary py-3 px-4 me-5">Download CV</a>
                         <button type="button" class="btn-play" data-bs-toggle="modal"
-                            data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
+                                data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
                             <span></span>
                         </button>
                         <h5 class="ms-4 mb-0 d-none d-sm-block">Play Video</h5>
                     </div>
                 </div>
+
                 <div class="col-lg-6">
                     <img class="img-fluid" src="img/profile.png" alt="">
                 </div>
             </div>
         </div>
     </div>
-    <!-- Header End -->
 
-
-    <!-- Video Modal Start -->
-    <div class="modal modal-video fade" id="videoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- 비디오 모달 -->
+    <div class="modal modal-video fade" id="videoModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content rounded-0">
                 <div class="modal-header">
-                    <h3 class="modal-title" id="exampleModalLabel">Youtube Video</h3>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h3 class="modal-title">Youtube Video</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
+
                 <div class="modal-body">
-                    <!-- 16:9 aspect ratio -->
                     <div class="ratio ratio-16x9">
-                        <iframe class="embed-responsive-item" src="" id="video" allowfullscreen allowscriptaccess="always"
-                            allow="autoplay"></iframe>
+                        <iframe class="embed-responsive-item" src="" id="video" allowfullscreen allowscriptaccess="always" allow="autoplay"></iframe>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Video Modal End -->
 
-
-    <!-- About Start -->
+    <!-- 소개 -->
     <div class="container-xxl py-6" id="about">
         <div class="container">
             <div class="row g-5">
+
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="d-flex align-items-center mb-5">
                         <div class="years flex-shrink-0 text-center me-4">
                             <h1 class="display-1 mb-0">2</h1>
                             <h5 class="mb-0">Years</h5>
                         </div>
-                        <h3 class="lh-base mb-0">게임 개발자를 목표로 성결대학교에서 열심히 공부중입니다. </h3>
+                        <h3 class="lh-base mb-0">게임 개발자를 목표로 공부하고 있습니다.</h3>
                     </div>
-                    <p class="mb-4"> 저는 게임을 사랑하는 플레이어이자 개발자입니다. 게임 플레이를 넘어 직접 만들고 싶다고 생각이 들어 개발자라는 꿈을 갖게 되었습니다. 저의 장점은 다음과 같습니다.</p>
+
+                    <p class="mb-4">게임을 좋아해 개발자의 꿈을 가지게 되었고, 꾸준히 공부 중입니다.</p>
+
                     <p class="mb-3"><i class="far fa-check-circle text-primary me-3"></i>게임 개발에 대한 열정</p>
-                    <p class="mb-3"><i class="far fa-check-circle text-primary me-3"></i>다양한 게임 플레이 경험 : FPS, RPG, 전략 게임 등</p>
-                    <p class="mb-3"><i class="far fa-check-circle text-primary me-3"></i>개발 능력 : Unity, C#, JavaScript</p>
+                    <p class="mb-3"><i class="far fa-check-circle text-primary me-3"></i>다양한 장르의 게임 경험</p>
+                    <p class="mb-3"><i class="far fa-check-circle text-primary me-3"></i>Unity, C#, JavaScript 활용 가능</p>
+
                     <a class="btn btn-primary py-3 px-5 mt-3" href="/about_detailed" target="_blank">Read More</a>
                 </div>
+
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="row g-3 mb-4">
                         <div class="col-sm-6">
@@ -146,92 +147,107 @@
                             <img class="img-fluid rounded" src="img/about-2.jpg" alt="">
                         </div>
                     </div>
+
                     <div class="d-flex align-items-center mb-3">
                         <h5 class="border-end pe-3 me-3 mb-0">협업 경험</h5>
-                        <h2 class="text-primary fw-bold mb-0" data-toggle="counter-up">3개 이상의 팀 프로젝트 경험</h2>
+                        <h2 class="text-primary fw-bold mb-0">3개 이상의 팀 프로젝트</h2>
                     </div>
-                    <p class="mb-4">함께 성장하는 협업을 중요하게 생각합니다. 여러 팀 프로젝트를 통해 소통과 역할 분담의 중요성을 배웠으며, 항상 팀의 목표를 우선으로 두고 최선을 다해 왔습니다.</p>
+
+                    <p class="mb-4">여러 프로젝트에서 소통과 협업을 경험했습니다.</p>
+
                     <div class="d-flex align-items-center mb-3">
-                        <h5 class="border-end pe-3 me-3 mb-0">즐거움을 만드는 개발자</h5>
-                        <h2 class="text-primary fw-bold mb-0" data-toggle="counter-up">플레이어의 감정을 움직이고 싶은 개발자</h2>
+                        <h5 class="border-end pe-3 me-3 mb-0">즐거움을 위한 개발</h5>
+                        <h2 class="text-primary fw-bold mb-0">감동을 주는 게임 목표</h2>
                     </div>
-                    <p class="mb-0">제가 만드는 게임을 통해 누군가가 웃고, 몰입하고, 감동받는 순간을 꿈꿉니다. 재미뿐 아니라, 의미를 담은 게임을 만드는 것이 제 목표입니다.</p>
+
+                    <p class="mb-0">감정과 몰입을 이끌 수 있는 게임 제작을 목표로 하고 있습니다.</p>
                 </div>
             </div>
         </div>
     </div>
-    <!-- About End -->
 
-
-    <!-- Expertise Start -->
+    <!-- 기술 경험 -->
     <div class="container-xxl py-6 pb-5" id="skill">
         <div class="container">
             <div class="row g-5">
+
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                     <h1 class="display-5 mb-5">기술 & 경험</h1>
-                    <p class="mb-4">제가 성결대학교에서 게임 개발을 전공하며 쌓은 기술과 경험입니다.</p>
-                    <h3 class="mb-4">저의 기술</h3>
+                    <p class="mb-4">전공 과정에서 쌓은 기술들입니다.</p>
+
+                    <h3 class="mb-4">보유 기술</h3>
+
                     <div class="row align-items-center">
                         <div class="col-md-6">
+
                             <div class="skill mb-4">
                                 <div class="d-flex justify-content-between">
                                     <h6 class="font-weight-bold">C#</h6>
                                     <h6 class="font-weight-bold">60%</h6>
                                 </div>
                                 <div class="progress">
-                                    <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="60"></div>
                                 </div>
                             </div>
+
                             <div class="skill mb-4">
                                 <div class="d-flex justify-content-between">
                                     <h6 class="font-weight-bold">HTML</h6>
                                     <h6 class="font-weight-bold">50%</h6>
                                 </div>
                                 <div class="progress">
-                                    <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="50"></div>
                                 </div>
                             </div>
+
                             <div class="skill mb-4">
                                 <div class="d-flex justify-content-between">
                                     <h6 class="font-weight-bold">Unity</h6>
                                     <h6 class="font-weight-bold">40%</h6>
                                 </div>
                                 <div class="progress">
-                                    <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="40"></div>
                                 </div>
                             </div>
+
                         </div>
                         <div class="col-md-6">
+
                             <div class="skill mb-4">
                                 <div class="d-flex justify-content-between">
                                     <h6 class="font-weight-bold">Python</h6>
                                     <h6 class="font-weight-bold">40%</h6>
                                 </div>
                                 <div class="progress">
-                                    <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="40"></div>
                                 </div>
                             </div>
+
                             <div class="skill mb-4">
                                 <div class="d-flex justify-content-between">
                                     <h6 class="font-weight-bold">JavaScript</h6>
                                     <h6 class="font-weight-bold">35%</h6>
                                 </div>
                                 <div class="progress">
-                                    <div class="progress-bar bg-dark" role="progressbar" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-dark" role="progressbar" aria-valuenow="35"></div>
                                 </div>
                             </div>
+
                             <div class="skill mb-4">
                                 <div class="d-flex justify-content-between">
                                     <h6 class="font-weight-bold">etc</h6>
                                     <h6 class="font-weight-bold">30%</h6>
                                 </div>
                                 <div class="progress">
-                                    <div class="progress-bar bg-info" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-info" role="progressbar" aria-valuenow="30"></div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
+
+                <!-- 경험 / 교육 탭 -->
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                     <ul class="nav nav-pills rounded border border-2 border-primary mb-5">
                         <li class="nav-item w-50">
@@ -241,83 +257,103 @@
                             <button class="nav-link w-100 py-3 fs-5" data-bs-toggle="pill" href="#tab-2">교육</button>
                         </li>
                     </ul>
+
                     <div class="tab-content">
+
+                        <!-- 경험 -->
                         <div id="tab-1" class="tab-pane fade show p-0 active">
                             <div class="row gy-5 gx-4">
+
                                 <div class="col-sm-6">
                                     <h5>Unity 2D 게임 개발 프로젝트</h5>
                                     <hr class="text-primary my-2">
                                     <p class="text-primary mb-1">2025.07 ~ 진행중</p>
                                     <h6 class="mb-0">게임개발 연습</h6>
                                 </div>
+
                                 <div class="col-sm-6">
                                     <h5>웹 to-do list 사이트 제작</h5>
                                     <hr class="text-primary my-2">
                                     <p class="text-primary mb-1">2025.03 ~ 2025.07</p>
                                     <h6 class="mb-0">개인 프로젝트</h6>
                                 </div>
+
                                 <div class="col-sm-6">
                                     <h5>웹 포트폴리오 사이트 제작</h5>
                                     <hr class="text-primary my-2">
                                     <p class="text-primary mb-1">2025.09 ~ 진행중</p>
                                     <h6 class="mb-0">수업 내 실습</h6>
                                 </div>
+
                                 <div class="col-sm-6">
-                                    <h5>게임메이커를 활용한 2D 게임 개발 연습</h5>
+                                    <h5>게임메이커 2D 개발 연습</h5>
                                     <hr class="text-primary my-2">
                                     <p class="text-primary mb-1">2022.03 ~ 2022.07</p>
                                     <h6 class="mb-0">수업 내 실습</h6>
                                 </div>
+
                             </div>
                         </div>
-                        <div id="tab-2" class="tab-pane fade show p-0">
+
+                        <!-- 교육 -->
+                        <div id="tab-2" class="tab-pane fade p-0">
                             <div class="row gy-5 gx-4">
+
                                 <div class="col-sm-6">
                                     <h5>미디어소프트웨어학과 (재학 중)</h5>
                                     <hr class="text-primary my-2">
                                     <p class="text-primary mb-1">2022.03 - 현재</p>
                                     <h6 class="mb-0">성결대학교</h6>
                                 </div>
+
                                 <div class="col-sm-6">
                                     <h5>Unity & C# 실습 과정</h5>
                                     <hr class="text-primary my-2">
                                     <p class="text-primary mb-1">2025.03 - 2025.07</p>
                                     <h6 class="mb-0">게임 수학1</h6>
                                 </div>
+
                                 <div class="col-sm-6">
                                     <h5>C# 특강 수강</h5>
                                     <hr class="text-primary my-2">
                                     <p class="text-primary mb-1">2025.08</p>
-                                    <h6 class="mb-0">박성준 교수님 여름방학 특강</h6>
+                                    <h6 class="mb-0">박성준 교수님 특강</h6>
                                 </div>
+
                                 <div class="col-sm-6">
-                                    <h5>MIT App Inventor 기초 앱 개발 과정</h5>
+                                    <h5>MIT App Inventor 기초 과정</h5>
                                     <hr class="text-primary my-2">
                                     <p class="text-primary mb-1">2025.03 ~ 현재</p>
                                     <h6 class="mb-0">스마트애플리케이션코딩</h6>
                                 </div>
+
                             </div>
                         </div>
+
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
-    <!-- Expertise End -->
 
-
-    <!-- Service Start -->
+    <!-- 서비스 -->
     <div class="container-fluid bg-light my-5 py-6" id="service">
         <div class="container">
             <div class="row g-5 mb-5 wow fadeInUp" data-wow-delay="0.1s">
+
                 <div class="col-lg-6">
                     <h1 class="display-5 mb-0">제가 할 수 있는 일</h1>
                 </div>
+
                 <div class="col-lg-6 text-lg-end">
                     <a class="btn btn-primary py-3 px-5" href="">Hire Me</a>
                 </div>
+
             </div>
+
             <div class="row g-4">
+
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="service-item d-flex flex-column flex-sm-row bg-white rounded h-100 p-4 p-lg-5">
                         <div class="bg-icon flex-shrink-0 mb-3">
@@ -326,22 +362,24 @@
                         <div class="ms-sm-4">
                             <h4 class="mb-3">Unity 2D 게임 개발</h4>
                             <h6 class="mb-3">Start from <span class="text-primary">$0.9</span></h6>
-                            <span> Unity 엔진을 활용해 다양한 장르의 게임을 제작할 수 있습니다.</span>
+                            <span>Unity 엔진을 활용해 다양한 장르의 게임 제작 가능</span>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="service-item d-flex flex-column flex-sm-row bg-white rounded h-100 p-4 p-lg-5">
                         <div class="bg-icon flex-shrink-0 mb-3">
                             <i class="fa fa-code-branch fa-2x text-dark"></i>
                         </div>
                         <div class="ms-sm-4">
-                            <h4 class="mb-3">프로그래밍 & 스크립팅 (C# / JavaScript)</h4>
+                            <h4 class="mb-3">프로그래밍 & 스크립팅</h4>
                             <h6 class="mb-3">Start from <span class="text-primary">$0.9</span></h6>
-                            <span>게임 로직 설계, UI 동작 구현, 데이터 처리 등 C#과 JavaScript를 이용한  프로그래밍이 가능합니다.</span>
+                            <span>C#과 JavaScript를 활용한 게임 로직 구현</span>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="service-item d-flex flex-column flex-sm-row bg-white rounded h-100 p-4 p-lg-5">
                         <div class="bg-icon flex-shrink-0 mb-3">
@@ -350,10 +388,11 @@
                         <div class="ms-sm-4">
                             <h4 class="mb-3">게임 기획 & 시스템 설계</h4>
                             <h6 class="mb-3">Start from <span class="text-primary">$0.9</span></h6>
-                            <span> 플레이어 경험을 고려한 레벨 구성, 전투 밸런스, 게임 내 성장 시스템 등 구조적인 설계를 담당할 수 있습니다.</span>
+                            <span>레벨 구성, 전투 밸런스 등 게임 구조 설계 가능</span>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="service-item d-flex flex-column flex-sm-row bg-white rounded h-100 p-4 p-lg-5">
                         <div class="bg-icon flex-shrink-0 mb-3">
@@ -362,19 +401,19 @@
                         <div class="ms-sm-4">
                             <h4 class="mb-3">웹 포트폴리오 제작</h4>
                             <h6 class="mb-3">Start from <span class="text-primary">$0.9</span></h6>
-                            <span> HTML, CSS, JavaScript를 사용해 포트폴리오나 팀 프로젝트 소개용 웹페이지를 직접 개발할 수 있습니다.</span>
+                            <span>HTML, CSS, JS 기반 웹 페이지 제작 가능</span>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
-    <!-- Service End -->
 
-
-    <!-- Projects Start -->
+    <!-- 프로젝트 -->
     <div class="container-xxl py-6 pt-5" id="project">
         <div class="container">
+
             <div class="row g-5 mb-5 align-items-center wow fadeInUp" data-wow-delay="0.1s">
                 <div class="col-lg-6">
                     <h1 class="display-5 mb-0">나의 프로젝트</h1>
@@ -387,80 +426,115 @@
                     </ul>
                 </div>
             </div>
+
+            <!-- 프로젝트 목록 -->
             <div class="row g-4 portfolio-container wow fadeInUp" data-wow-delay="0.1s">
+
+                <!-- 각 프로젝트 박스 -->
                 <div class="col-lg-4 col-md-6 portfolio-item first">
                     <div class="portfolio-img rounded overflow-hidden">
                         <img class="img-fluid" src="img/project-1.jpg" alt="">
                         <div class="portfolio-btn">
-                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="img/project-1.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href=""><i class="fa fa-link"></i></a>
+                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1"
+                               href="img/project-1.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="">
+                                <i class="fa fa-link"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
+
+                <!-- 동일 구조 반복… (생략 없이 유지) -->
                 <div class="col-lg-4 col-md-6 portfolio-item second">
                     <div class="portfolio-img rounded overflow-hidden">
                         <img class="img-fluid" src="img/project-2.jpg" alt="">
                         <div class="portfolio-btn">
-                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="img/project-2.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href=""><i class="fa fa-link"></i></a>
+                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1"
+                               href="img/project-2.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="">
+                                <i class="fa fa-link"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
+
+                <!-- 이하 동일한 반복 구조 → 들여쓰기만 정리 -->
+
                 <div class="col-lg-4 col-md-6 portfolio-item first">
                     <div class="portfolio-img rounded overflow-hidden">
                         <img class="img-fluid" src="img/project-3.jpg" alt="">
                         <div class="portfolio-btn">
-                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="img/project-3.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href=""><i class="fa fa-link"></i></a>
+                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1"
+                               href="img/project-3.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="">
+                                <i class="fa fa-link"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-lg-4 col-md-6 portfolio-item second">
                     <div class="portfolio-img rounded overflow-hidden">
                         <img class="img-fluid" src="img/project-4.jpg" alt="">
                         <div class="portfolio-btn">
-                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="img/project-4.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href=""><i class="fa fa-link"></i></a>
+                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1"
+                               href="img/project-4.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="">
+                                <i class="fa fa-link"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-lg-4 col-md-6 portfolio-item first">
                     <div class="portfolio-img rounded overflow-hidden">
                         <img class="img-fluid" src="img/project-5.jpg" alt="">
                         <div class="portfolio-btn">
-                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="img/project-5.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href=""><i class="fa fa-link"></i></a>
+                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1"
+                               href="img/project-5.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="">
+                                <i class="fa fa-link"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-lg-4 col-md-6 portfolio-item second">
                     <div class="portfolio-img rounded overflow-hidden">
                         <img class="img-fluid" src="img/project-6.jpg" alt="">
                         <div class="portfolio-btn">
-                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="img/project-6.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href=""><i class="fa fa-link"></i></a>
+                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1"
+                               href="img/project-6.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                            <a class="btn btn-lg-square btn-outline-secondary border-2 mx-1" href="">
+                                <i class="fa fa-link"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
+
             </div>
+
         </div>
     </div>
-    <!-- Projects End -->
 
-
-    <!-- Team Start -->
+    <!-- 팀원 -->
     <div class="container-xxl py-6 pb-5" id="team">
         <div class="container">
+
             <div class="row g-5 mb-5 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="col-lg-6">
                     <h1 class="display-5 mb-0">프로젝트 팀원들</h1>
                 </div>
+
                 <div class="col-lg-6 text-lg-end">
                     <a class="btn btn-primary py-3 px-5" href="mailto:your-email@example.com">메일 보내기</a>
                     <a class="btn btn-primary py-3 px-5" href="tel:+1234567890">직접 연락하기</a>
                 </div>
             </div>
+
             <div class="row g-4">
+
+                <!-- 팀원 카드 -->
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="team-item position-relative">
                         <img class="img-fluid rounded" src="img/team-1.jpg" alt="">
@@ -473,6 +547,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="team-item position-relative">
                         <img class="img-fluid rounded" src="img/team-2.jpg" alt="">
@@ -485,6 +560,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="team-item position-relative">
                         <img class="img-fluid rounded" src="img/team-3.jpg" alt="">
@@ -497,17 +573,21 @@
                         </div>
                     </div>
                 </div>
+
             </div>
+
         </div>
     </div>
-    <!-- Team End -->
 
-
-    <!-- Testimonial Start -->
+    <!-- 후기 -->
     <div class="container-fluid bg-light py-5 my-5" id="testimonial">
         <div class="container-fluid py-5">
+
             <h1 class="display-5 text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">후기</h1>
+
             <div class="row justify-content-center">
+
+                <!-- 왼쪽 이미지 -->
                 <div class="col-lg-3 d-none d-lg-block">
                     <div class="testimonial-left h-100">
                         <img class="img-fluid wow fadeIn" data-wow-delay="0.1s" src="img/testimonial-1.jpg" alt="">
@@ -515,11 +595,15 @@
                         <img class="img-fluid wow fadeIn" data-wow-delay="0.5s" src="img/testimonial-3.jpg" alt="">
                     </div>
                 </div>
+
+                <!-- 후기 캐러셀 -->
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="owl-carousel testimonial-carousel">
+
                         <div class="testimonial-item text-center">
                             <div class="position-relative mb-5">
-                                <img class="img-fluid rounded-circle border border-secondary p-2 mx-auto" src="img/testimonial-1.jpg" alt="">
+                                <img class="img-fluid rounded-circle border border-secondary p-2 mx-auto"
+                                     src="img/testimonial-1.jpg" alt="">
                                 <div class="testimonial-icon">
                                     <i class="fa fa-quote-left text-primary"></i>
                                 </div>
@@ -529,9 +613,11 @@
                             <h5>이OO</h5>
                             <span>Profession</span>
                         </div>
+
                         <div class="testimonial-item text-center">
                             <div class="position-relative mb-5">
-                                <img class="img-fluid rounded-circle border border-secondary p-2 mx-auto" src="img/testimonial-2.jpg" alt="">
+                                <img class="img-fluid rounded-circle border border-secondary p-2 mx-auto"
+                                     src="img/testimonial-2.jpg" alt="">
                                 <div class="testimonial-icon">
                                     <i class="fa fa-quote-left text-primary"></i>
                                 </div>
@@ -541,9 +627,11 @@
                             <h5>김OO</h5>
                             <span>Profession</span>
                         </div>
+
                         <div class="testimonial-item text-center">
                             <div class="position-relative mb-5">
-                                <img class="img-fluid rounded-circle border border-secondary p-2 mx-auto" src="img/testimonial-3.jpg" alt="">
+                                <img class="img-fluid rounded-circle border border-secondary p-2 mx-auto"
+                                     src="img/testimonial-3.jpg" alt="">
                                 <div class="testimonial-icon">
                                     <i class="fa fa-quote-left text-primary"></i>
                                 </div>
@@ -553,8 +641,11 @@
                             <h5>박OO</h5>
                             <span>Profession</span>
                         </div>
+
                     </div>
                 </div>
+
+                <!-- 오른쪽 이미지 -->
                 <div class="col-lg-3 d-none d-lg-block">
                     <div class="testimonial-right h-100">
                         <img class="img-fluid wow fadeIn" data-wow-delay="0.1s" src="img/testimonial-1.jpg" alt="">
@@ -562,32 +653,38 @@
                         <img class="img-fluid wow fadeIn" data-wow-delay="0.5s" src="img/testimonial-3.jpg" alt="">
                     </div>
                 </div>
+
             </div>
+
         </div>
     </div>
-    <!-- Testimonial End -->
 
-
-    <!-- Contact Start -->
+    <!-- 연락하기 -->
     <div class="container-xxl pb-5" id="contact">
         <div class="container py-5">
+
             <div class="row g-5 mb-5 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="col-lg-6">
-                    <h1 class="display-5 mb-0">함께 일하실분을 찾습니다!</h1>
-                </div>
+                    <h1 class="display-5 mb-0">함께 일하실 분을 찾습니다!</h1>
                 </div>
             </div>
+
             <div class="row g-5">
+
+                <!-- 연락처 정보 -->
                 <div class="col-lg-5 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <p class="mb-2">My office:</p>
                     <h3 class="fw-bold">인천 부평구</h3>
                     <hr class="w-100">
+
                     <p class="mb-2">Call me:</p>
                     <h3 class="fw-bold">010-4036-6905</h3>
                     <hr class="w-100">
+
                     <p class="mb-2">Mail me:</p>
                     <h3 class="fw-bold">10075@sungkyul.ac.kr</h3>
                     <hr class="w-100">
+
                     <p class="mb-2">Follow me:</p>
                     <div class="d-flex pt-2">
                         <a class="btn btn-square btn-primary me-2" href=""><i class="fab fa-twitter"></i></a>
@@ -596,99 +693,117 @@
                         <a class="btn btn-square btn-primary me-2" href=""><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
+
+                <!-- 문의 폼 -->
                 <div class="col-lg-7 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <p class="mb-4">카카오톡과 이메일로도 연락 하실 수 있습니다.<a href="https://htmlcodex.com/contact-form">Download Now</a>.</p>
+
+                    <p class="mb-4">카카오톡과 이메일 연락도 가능합니다.
+                        <a href="https://htmlcodex.com/contact-form">Download Now</a>.
+                    </p>
+
+                    <!-- 이메일 + 내용 전송 -->
                     <form action="/upload-email" method="post">
                         <div class="row g-3">
+
                             <div class="col-md-6">
                                 <div class="form-floating">
                                     <input type="text" class="form-control" id="name" name="name" placeholder="Your Name">
                                     <label for="name">이름</label>
                                 </div>
                             </div>
+
                             <div class="col-md-6">
                                 <div class="form-floating">
                                     <input type="email" class="form-control" id="email" name="email" placeholder="Your Email">
                                     <label for="email">이메일</label>
                                 </div>
                             </div>
+
                             <div class="col-12">
                                 <div class="form-floating">
                                     <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject">
                                     <label for="subject">제목</label>
                                 </div>
                             </div>
+
                             <div class="col-12">
                                 <div class="form-floating">
                                     <textarea class="form-control" placeholder="Leave a message here"
-                                            id="message" name="message" style="height: 100px"></textarea>
+                                              id="message" name="message" style="height: 100px"></textarea>
                                     <label for="message">내용</label>
                                 </div>
                             </div>
+
                             <div class="col-12">
                                 <button class="btn btn-primary py-3 px-5" type="submit">메시지 전송(파일 업로드)</button>
                             </div>
+
                         </div>
                     </form>
 
                     <hr class="my-4">
+
+                    <!-- 파일 업로드 -->
                     <form th:action="@{/upload-file}" method="post" enctype="multipart/form-data">
                         <div class="row g-3">
+
                             <div class="col-12">
                                 <div class="form-floating">
                                     <input type="file" class="form-control" id="profileFile" name="file">
                                     <label for="profileFile">프로필 파일 업로드</label>
                                 </div>
                             </div>
+
                             <div class="col-12">
-                                <button class="btn btn-secondary py-3 px-5" type="submit">
-                                    파일 업로드
-                                </button>
+                                <button class="btn btn-secondary py-3 px-5" type="submit">파일 업로드</button>
                             </div>
+
                         </div>
                     </form>
+
                 </div>
             </div>
+
         </div>
     </div>
-    <!-- Contact End -->
 
-
-    <!-- Map Start -->
+    <!-- 지도 -->
     <div class="container-xxl pt-5 px-0 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container-xxl pt-5 px-0">
             <div class="bg-dark">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25362.593970760634!2d126.9265517!3d37.3821635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b67b86fa90ca9%3A0x50ab76efd5310e0d!2z7ISx6rKw64yA7ZWZ6rWQ!5e0!3m2!1sko!2skr!4v1764724903047!5m2!1sko!2skr" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25362.593970760634!2d126.9265517!3d37.3821635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!
+                4f13.1!3m3!1m2!1s0x357b67b86fa90ca9%3A0x50ab76efd5310e0d!2z7ISx6rKw64yA7ZWZ6rWQ!5e0!3m2!1sko!2skr!4v1764724903047!5m2!1sko!2skr"
+                        width="100%" height="450" style="border:0;" allowfullscreen loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
     </div>
-    <!-- Map End -->
 
-
-    <!-- Copyright Start -->
+    <!-- 푸터 -->
     <div class="container-fluid bg-dark text-white py-4">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        &copy; <a class="border-bottom text-secondary" href="#">Your Site Name</a>, All Right Reserved.
-                    </div>
-                    <div class="col-md-6 text-center text-md-end">
-                        <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                        Designed By <a class="border-bottom text-secondary" href="https://htmlcodex.com">HTML Codex</a>
-                        <br>Distributed By: <a class="border-bottom" href="https://themewagon.com" target="_blank">ThemeWagon</a>
-                    </div>
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    &copy; <a class="border-bottom text-secondary" href="#">Your Site Name</a>, All Right Reserved.
+                </div>
+
+                <div class="col-md-6 text-center text-md-end">
+                    Designed By <a class="border-bottom text-secondary" href="https://htmlcodex.com">HTML Codex</a>
+                    <br>Distributed By:
+                    <a class="border-bottom" href="https://themewagon.com" target="_blank">ThemeWagon</a>
                 </div>
             </div>
+
         </div>
     </div>
-    <!-- Copyright End -->
 
+    <!-- 맨 위로 이동 -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top">
+        <i class="bi bi-arrow-up"></i>
+    </a>
 
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
-
-
-    <!-- JavaScript Libraries -->
+    <!-- 외부 JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="lib/wow/wow.min.js"></script>
@@ -700,8 +815,8 @@
     <script src="lib/isotope/isotope.pkgd.min.js"></script>
     <script src="lib/lightbox/js/lightbox.min.js"></script>
 
-    <!-- Template Javascript -->
+    <!-- 메인 스크립트 -->
     <script src="js/main.js"></script>
-</body>
 
+</body>
 </html>

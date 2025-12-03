@@ -17,11 +17,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 public class FileController {
 
-    // application.properties 에서 경로 주입
+    // application.properties 에서 업로드 경로 주입
     @Value("${spring.servlet.multipart.location}")
     private String uploadFolder;
 
-    // 공통: 업로드 폴더 준비
+    // 업로드 폴더 준비 (없으면 생성)
     private Path getUploadPath() throws IOException {
         Path uploadPath = Paths.get(uploadFolder).toAbsolutePath().normalize();
         if (!Files.exists(uploadPath)) {
@@ -30,32 +30,31 @@ public class FileController {
         return uploadPath;
     }
 
-    // 공통: 동일 이름이 있으면 _1, _2 붙여서 다른 이름으로 생성
+    // 같은 이름의 파일이 있으면 _1, _2 식으로 뒤에 번호를 붙여서 이름 생성
     private Path createUniqueFile(Path uploadPath, String baseName, String ext) throws IOException {
-        String fileName = baseName + ext;          // 예: abc.txt
+        String fileName = baseName + ext;
         Path filePath = uploadPath.resolve(fileName);
 
         int count = 1;
         while (Files.exists(filePath)) {
-            fileName = baseName + "_" + count + ext;   // 예: abc_1.txt, abc_2.txt ...
+            fileName = baseName + "_" + count + ext;
             filePath = uploadPath.resolve(fileName);
             count++;
         }
         return filePath;
     }
 
-    // 1) 메일 내용 텍스트 파일 업로드
+    // 1) 메일 내용을 텍스트 파일로 저장
     @PostMapping("/upload-email")
-    public String uploadEmail(
-            @RequestParam("email") String email,
-            @RequestParam("subject") String subject,
-            @RequestParam("message") String message,
-            RedirectAttributes redirectAttributes) {
+    public String uploadEmail(@RequestParam("email") String email,
+                              @RequestParam("subject") String subject,
+                              @RequestParam("message") String message,
+                              RedirectAttributes redirectAttributes) {
 
         try {
             Path uploadPath = getUploadPath();
 
-            // 이메일을 이용해서 파일 이름 생성 (특수문자 제거)
+            // 이메일을 기반으로 파일 이름 생성(특수문자 제거)
             String sanitizedEmail = email.replaceAll("[^a-zA-Z0-9]", "_");
             Path filePath = createUniqueFile(uploadPath, sanitizedEmail, ".txt");
 
@@ -75,11 +74,11 @@ public class FileController {
         } catch (IOException e) {
             e.printStackTrace();
             redirectAttributes.addFlashAttribute("message", "업로드 중 오류가 발생했습니다.");
-            return "article_error";   // templates/article_error.html
+            return "article_error";
         }
     }
 
-    // 2) 실제 파일 업로드 (예: 프로필 이미지 등)
+    // 2) 실제 파일 업로드 (예: 프로필 이미지)
     @PostMapping("/upload-file")
     public String uploadFile(@RequestParam("file") MultipartFile file,
                              RedirectAttributes redirectAttributes) {
@@ -97,15 +96,16 @@ public class FileController {
                 originalName = "uploaded";
             }
 
-            // 파일명 / 확장자 분리
+            // 파일명과 확장자 분리
             String baseName = originalName;
             String ext = "";
             int dotIndex = originalName.lastIndexOf('.');
             if (dotIndex != -1) {
                 baseName = originalName.substring(0, dotIndex);
-                ext = originalName.substring(dotIndex);   // .png, .jpg ...
+                ext = originalName.substring(dotIndex);   // .png, .jpg 등
             }
 
+            // 파일명에서 특수문자 제거
             baseName = baseName.replaceAll("[^a-zA-Z0-9]", "_");
 
             Path filePath = createUniqueFile(uploadPath, baseName, ext);

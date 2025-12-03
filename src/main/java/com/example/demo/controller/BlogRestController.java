@@ -10,23 +10,22 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
-// @RestController // @Controller + @ResponseBody
+// @RestController
 public class BlogRestController {
 
     private final BlogService blogService;
 
-    // @PostMapping("/api/articles") // POST 요청
+    // 예전 REST용 코드
+    // @PostMapping("/api/articles")
     // public ResponseEntity<Article> addArticle(@ModelAttribute AddArticleRequest request) {
-    //     // 게시글 저장
     //     Article savedArticle = blogService.save(request);
-    //     // 상태 코드 및 게시글 정보 반환
     //     return ResponseEntity
     //             .status(HttpStatus.CREATED)
     //             .body(savedArticle);
     // }
 
+    // 브라우저가 요청하는 /favicon.ico에 대해 빈 응답 처리
     @GetMapping("/favicon.ico")
     public void favicon() {
-        // 아무 작업도 하지 않음
     }
 }

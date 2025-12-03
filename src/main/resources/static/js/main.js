@@ -124,6 +124,7 @@
     
 })(jQuery);
 
+// 창 닫기 전에 확인 알림
 function confirmClose() {
     if (confirm("정말 창을 닫으시겠습니까?")) {
         window.close();

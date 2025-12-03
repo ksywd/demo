@@ -22,28 +22,21 @@ public class BlogController {
     @Autowired
     private BlogService blogService;
 
-    // @GetMapping("/article_list")
-    // public String article_list(Model model) {
-    //     List<Article> list = blogService.findAll();
-    //     model.addAttribute("articles", list);
-    //     return "article_list";
-    // }
-
-    @GetMapping("/board_list") // 새로운 게시판 링크 지정
+    // 게시판 목록
+    @GetMapping("/board_list")
     public String board_list(Model model,
-        @RequestParam(defaultValue = "0") int page,
-        @RequestParam(defaultValue = "") String keyword,
-        HttpSession session) { // 세션 객체 전달
+                             @RequestParam(defaultValue = "0") int page,
+                             @RequestParam(defaultValue = "") String keyword,
+                             HttpSession session) {
 
-        // 세션 아이디, 이메일 확인
-        String userId = (String) session.getAttribute("userId"); // 세션 아이디 존재 확인
+        // 로그인 여부 확인
+        String userId = (String) session.getAttribute("userId");
         if (userId == null) {
-            return "redirect:/login"; // 로그인 페이지로 리다이렉션
+            return "redirect:/login";
         }
-        System.out.println("세션 userId: " + userId); // 서버 IDE 터미널에 세션 값 출력
+        System.out.println("세션 userId: " + userId);
 
-        // 세션에서 email 얻기
-        String email = (String) session.getAttribute("email"); // 세션에서 이메일 확인
+        String email = (String) session.getAttribute("email");
         System.out.println("세션 email: " + email);
 
         int pageSize = 30;
@@ -63,12 +56,13 @@ public class BlogController {
         model.addAttribute("currentPage", page);
         model.addAttribute("keyword", keyword);
         model.addAttribute("startNum", startNum);
-        model.addAttribute("email", email); // 로그인 사용자(이메일) 전달
+        model.addAttribute("email", email);
 
         return "board_list";
     }
 
-    @GetMapping("/board_view/{id}") // 게시판 링크 지정
+    // 게시글 상세 페이지
+    @GetMapping("/board_view/{id}")
     public String board_view(Model model,
                              @PathVariable Long id,
                              HttpSession session) {
@@ -87,27 +81,30 @@ public class BlogController {
         return "board_view";
     }
 
+    // 글쓰기 페이지
     @GetMapping("/board_write")
     public String board_write() {
         return "board_write";
     }
 
-    @PostMapping("/api/boards") // 글쓰기 게시판 저장
+    // 게시글 저장
+    @PostMapping("/api/boards")
     public String addboards(@ModelAttribute AddArticleRequest request,
-                        HttpSession session) {
+                            HttpSession session) {
 
-    String email = (String) session.getAttribute("email");
-    if (email == null) {
-        return "redirect:/login";
+        String email = (String) session.getAttribute("email");
+        if (email == null) {
+            return "redirect:/login";
+        }
+
+        request.setUser(email);
+        request.setEmail(email);
+
+        blogService.save(request);
+        return "redirect:/board_list";
     }
 
-    request.setUser(email);
-    request.setEmail(email);
-
-    blogService.save(request);
-    return "redirect:/board_list";
-}
-
+    // 게시글 수정 페이지
     @GetMapping("/board_edit/{id}")
     public String board_edit(Model model, @PathVariable Long id) {
         Optional<Board> boardOpt = blogService.findById(id);
@@ -120,17 +117,21 @@ public class BlogController {
         return "board_edit";
     }
 
+    // 게시글 수정 처리
     @PostMapping("/board_edit/{id}")
     public String updateBoard(@PathVariable Long id, @ModelAttribute AddArticleRequest request) {
         blogService.update(id, request);
         return "redirect:/board_list";
     }
 
+    // 게시글 삭제
     @DeleteMapping("/api/board_delete/{id}")
     public String deleteBoard(@PathVariable Long id) {
         blogService.delete(id);
         return "redirect:/board_list";
     }
+
+    // 아래부터는 article_list 관련 기존 코드 유지
 
     @PutMapping("/api/article_edit/{id}")
     public String updateArticle(@PathVariable Long id, @ModelAttribute AddArticleRequest request) {
@@ -149,5 +150,4 @@ public class BlogController {
         blogService.save(request);
         return "redirect:/article_list";
     }
-
 }

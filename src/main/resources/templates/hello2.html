@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>Hello2 페이지</title>
 </head>
+
 <body>
     <h1>안녕하세요!</h1>
+
+    <!-- 서버에서 전달된 값들 출력 -->
     <p th:text="${name}"></p>
     <p th:text="${greeting}"></p>
     <p th:text="${today}"></p>
     <p th:text="${weather}"></p>
     <p th:text="${comment}"></p>
 
+    <!-- 메인으로 이동 -->
     <a href="/">홈페이지 메인</a>
 </body>
+
 </html>

@@ -1,27 +1,32 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>블로그 게시판(new)</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
     <style>
-        .action-cell > * {
-            margin-right: 6px;
-        }
-        .action-cell form {
-            display: inline;
-        }
+        /* 버튼 간격 */
+        .action-cell > * { margin-right: 6px; }
+        .action-cell form { display: inline; }
     </style>
 </head>
+
 <body>
     <div class="container">
+
         <h1 class="mt-5">회원 가입 화면</h1>
 
-        <!-- 회원가입 폼 -->
+        <!-- 회원가입 입력 폼 -->
         <div class="mt-4">
             <div class="card shadow-sm">
                 <div class="card-body">
+
                     <h3 class="card-title text-center mb-4">회원정보 입력</h3>
 
                     <form th:action="@{/api/members}" method="post">
@@ -70,13 +75,17 @@
 
                         <!-- 회원가입 버튼 -->
                         <div class="text-center mt-4">
-                            <button type="submit" class="btn btn-primary btn-block">회원가입하기</button>
+                            <button type="submit" class="btn btn-primary btn-block">
+                                회원가입하기
+                            </button>
                         </div>
 
                     </form>
+
                 </div>
             </div>
         </div>
+
     </div>
 </body>
 </html>

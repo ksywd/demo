@@ -1,21 +1,31 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>블로그 게시판(new)</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
     <style>
+        /* 수정/삭제 버튼 간격 */
         .action-cell > * { margin-right: 6px; }
         .action-cell form { display: inline; }
     </style>
 </head>
+
 <body>
     <div class="container">
+
         <h1 class="mt-5">블로그 게시판(new)</h1>
 
+        <!-- 게시글 정보 -->
         <div class="mt-5">
             <h2>게시글 목록</h2>
+
             <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -28,26 +38,33 @@
                         <th>버튼</th>
                     </tr>
                 </thead>
+
                 <tbody>
                     <tr>
+                        <!-- 글 번호 -->
                         <td th:text="${boards.id}"></td>
+
+                        <!-- 제목 -->
                         <td>
                             <a th:href="@{/board_view/{id}(id=${boards.id})}">
                                 <span th:text="${boards.title}"></span>
                             </a>
                         </td>
+
+                        <!-- 작성자/날짜/조회수/좋아요 -->
                         <td th:text="${boards.user}"></td>
                         <td th:text="${boards.newdate}"></td>
                         <td th:text="${boards.count}"></td>
                         <td th:text="${boards.likec}"></td>
 
+                        <!-- 작성자 본인일 때만 수정/삭제 표시 -->
                         <td class="action-cell">
                             <div th:if="${email} == ${boards.user}">
                                 <a class="btn btn-warning btn-sm"
                                    th:href="@{/board_edit/{id}(id=${boards.id})}">수정</a>
 
                                 <form th:action="@{/api/board_delete/{id}(id=${boards.id})}"
-                                      method="post" style="display:inline;">
+                                      method="post">
                                     <input type="hidden" name="_method" value="delete">
                                     <button class="btn btn-danger btn-sm" type="submit">삭제</button>
                                 </form>
@@ -57,18 +74,21 @@
                 </tbody>
             </table>
 
+            <!-- 본문 내용 -->
             <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th>글내용</th>
                     </tr>
                 </thead>
+
                 <tbody>
                     <tr>
                         <td th:text="${boards.content}"></td>
                     </tr>
                 </tbody>
             </table>
+
         </div>
     </div>
 </body>

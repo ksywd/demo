@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>Hello 페이지</title>
 </head>
+
 <body>
     <h1>안녕하세요!</h1>
+
+    <!-- 서버에서 넘어온 데이터 출력 -->
     <p th:text="${data}"></p>
+
+    <!-- 이동 링크 -->
     <a href="/">홈페이지 메인</a>
     <br>
     <a href="/hello2">두번째 헬로 페이지</a>
 </body>
+
 </html>

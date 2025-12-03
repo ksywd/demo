@@ -1,12 +1,12 @@
 package com.example.demo.model.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository; // JPA 필수 등록
-import org.springframework.stereotype.Repository; // 빈 등록
-import com.example.demo.model.domain.TestDB; // 도메인 연동
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import com.example.demo.model.domain.TestDB;
 
-@Repository // 리포지토리 등록
+@Repository
 public interface TestRepository extends JpaRepository<TestDB, Long> {
 
-    // Find all TestDB entities by a name
+    // 이름으로 데이터 조회
     TestDB findByName(String name);
 }
