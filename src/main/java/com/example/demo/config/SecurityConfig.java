@@ -19,17 +19,18 @@ public class SecurityConfig { // 스프링에서 보안 관리 클래스
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         http
-            // 🔹 XSS 방어 헤더 추가
+            //  XSS 방어 헤더 추가
             .headers(headers -> headers
                 .addHeaderWriter((request, response) -> {
                     response.setHeader("X-XSS-Protection", "1; mode=block"); // X-XSS-Protection 헤더 설정
                 })
             )
 
-            // 🔹 CSRF 기본 활성화
-            .csrf(withDefaults())
+            //.csrf(withDefaults())
+            .csrf(csrf -> csrf.disable()
+            )
 
-            // 🔹 세션 관리 설정
+            //  세션 관리 설정
             .sessionManagement(session -> session
                 .invalidSessionUrl("/session-expired") // 세션 만료 시 이동할 URL
                 .maximumSessions(1)                    // 사용자별 최대 세션 수: 1개
